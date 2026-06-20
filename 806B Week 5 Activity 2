@@ -1,0 +1,34 @@
+pip install ucimlrepo
+
+from ucimlrepo import fetch_ucirepo 
+  
+# fetch dataset 
+iris = fetch_ucirepo(id=53) 
+  
+# data (as pandas dataframes) 
+X = iris.data.features 
+y = iris.data.targets 
+  
+# metadata 
+print(iris.metadata) 
+  
+# variable information 
+print(iris.variables) 
+
+    name     role         type demographic  \
+0  sepal length  Feature   Continuous        None   
+1   sepal width  Feature   Continuous        None   
+2  petal length  Feature   Continuous        None   
+3   petal width  Feature   Continuous        None   
+4         class   Target  Categorical        None   
+
+                                         description units missing_values  
+0                                               None    cm             no  
+1                                               None    cm             no  
+2                                               None    cm             no  
+3                                               None    cm             no  
+4  class of iris plant: Iris Setosa, Iris Versico...  None             no  
+
+
+
+
