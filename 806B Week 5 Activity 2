@@ -30,5 +30,56 @@ print(iris.variables)
 4  class of iris plant: Iris Setosa, Iris Versico...  None             no  
 
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.datasets import load_iris
+
+# Step 1: Load the dataset and count samples for each class
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df['species'] = [iris.target_names[i] for i in iris.target]
+
+# Count the number of samples for each class
+class_counts = df['species'].value_counts()
+print("Sample counts per class:")
+print(class_counts)
+
+# Step 2: Visualize using a bar chart
+sns.set_theme(style="whitegrid")
+plt.figure(figsize=(7, 5))
+
+# Create the bar chart
+ax = sns.countplot(x='species', data=df, palette='muted')
+
+# Add titles and labels
+plt.title('Distribution of Iris Species', fontsize=14, pad=15)
+plt.xlabel('Flower Species', fontsize=12)
+plt.ylabel('Number of Samples', fontsize=12)
+
+# Display counts on top of bars
+for p in ax.patches:
+    ax.annotate(f'{int(p.get_height())}', (p.get_x() + p.get_width() / 2., p.get_height()),
+                ha='center', va='center', xytext=(0, 5), textcoords='offset points', fontsize=11)
+
+plt.tight_layout()
+plt.show()
+
+
+Sample counts per class:
+species
+setosa        50
+versicolor    50
+virginica     50
+Name: count, dtype: int64
+/tmp/ipykernel_22650/1923991861.py:21: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.countplot(x='species', data=df, palette='muted')
+
+
+
+
 
 
