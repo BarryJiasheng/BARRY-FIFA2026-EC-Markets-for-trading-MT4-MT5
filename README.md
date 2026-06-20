@@ -1,0 +1,1 @@
+# BARRY-FIFA2026-EC-Markets-for-trading-MT4-MT5
